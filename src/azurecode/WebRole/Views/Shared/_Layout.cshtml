@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @*<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js"></script>*@
+    <script src="//ajax.aspnetcdn.com/ajax/signalr/jquery.signalr-2.0.1.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+</head>
+<body>
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                </ul>
+            </div>
+        </div>
+    </div>*@
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Chris Risner</p>
+        </footer>
+    </div>
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/terminal")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        
+        var termStore;
+
+        $('#term_demo').terminal(function (command, term) {
+            termStore = term;
+            term.echo(command);
+            $.get("api/gameone/" + command, function (data) {
+                term.echo(data);
+            });
+            return;
+            if (command !== '') {
+                try {
+                    var result = window.eval(command);
+                    if (result !== undefined) {
+                        term.echo(new String(result));
+                    }
+                } catch (e) {
+                    term.error(new String(e));
+                }
+            } else {
+                term.echo('');
+            }
+        }, {
+            greetings: 'Welcome to AdventureTerre',
+            name: 'js_demo',
+            height: 500,
+            prompt: '$> ',
+            onInit: function (term) {
+                $.get("api/gameone/begingame", function (data) {
+                    term.echo(data);
+                    console.log('response from begingame');
+                    var hub = $.connection.playerHub;
+
+                    hub.client.playerUpdate = function (message) {
+                        processMessage(message);
+                    }
+
+                    hub.client.playerUpdates = function (messages) {
+                        messages.Messages.forEach(processMessage);
+                    }
+
+                    $.connection.hub.start().done(function () {
+                        console.log("listening for messages");
+                    })
+                });
+            }
+        });
+
+        function processMessage(message) {
+
+            termStore.echo(message.Message);
+        }        
+    </script> 
+</body>
+</html>
