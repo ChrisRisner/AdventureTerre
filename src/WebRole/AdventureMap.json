@@ -1,0 +1,407 @@
+﻿{
+    "monsters": [
+        {
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "This guy looks really really angry!",
+                    "SetFlags": { }
+                },
+                {
+                    "Flags": {
+                        "HasItem1": true
+                    },
+                    "isDefault": false,
+                    "name": "Opt1",
+                    "text": "This guy is angry but he's scared of your knife!",
+                    "SetFlags": { }
+                }
+            ],
+            "id": 0,
+            "killedBy": [
+                1
+            ],
+            "movesRandomly":  false,
+            "name": "An Angry Customer",
+            "responses": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "I hate everything and everybody!",
+                    "SetFlags": {
+                        "SpokeWithCustomer": true
+                    }
+                },
+                {
+                    "Flags": {
+                        "HasItem1": true
+                    },
+                    "isDefault": false,
+                    "name": "Opt1",
+                    "text": "Stay away from me with that knife!",
+                    "SetFlags": { }
+                }
+            ],
+            "startIn": 1
+        },
+        {
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "She's a scary witch!",
+                    "SetFlags": { }
+                }
+            ],
+            "id": 1,
+            "killedBy": [
+                3
+            ],
+            "movesRandomly":  false,
+            "name": "The Wicked Witch of the East",
+            "responses": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "I'll get you my pretties!",
+                    "SetFlags": { }
+                }
+            ],
+            "startIn": 2
+        }
+    ],
+    "name": "My first game",
+    "npcs": [
+        {
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "The old man has a white beard that nearly reaches the ground.",
+                    "SetFlags": {
+                        "HasSeenOldMan": true
+                    }
+                }
+            ],
+            "id": 0,
+            "movesRandomly":  false,
+            "name": "Wisened Old Man",
+            "responses": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "Welcome to Adventure Terre",
+                    "SetFlags": {
+                        "SpokeWithOldMan": true
+                    }
+                }
+            ],
+            "startIn": 0
+        }
+    ],
+    "rooms": [
+        {
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "You are standing in an open field west of a white house with a boarded front door.\nThere is a forest to the north.",
+                    "SetFlags": {
+                        "SawRoomOne": true
+                    }
+                }
+            ],
+            "directions": [
+                {
+                    "cardinal": "north",
+                    "roomId": 1,
+                    "Flags": { }
+                }
+            ],
+            "id": 0,
+            "name": "west-of-house"
+        },
+        {
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "This is a dimly lit forest, with large trees all around.\nThere is a clearing to the north, and a house to the south.",
+                    "SetFlags": { }
+                },
+                {
+                    "Flags": {
+                        "HasItem1": true
+                    },
+                    "isDefault": false,
+                    "name": "Opt1",
+                    "text": "This is a dimly lit forest, with large trees all around.\nThere is a clearing to the north, and a house to the south.  Also, you have a knife.",
+                    "SetFlags": { }
+                }
+            ],
+            "directions": [
+                {
+                    "cardinal": "north",
+                    "roomId": 2,
+                    "Flags": { }
+                },
+                {
+                    "cardinal": "south",
+                    "roomId": 0,
+                    "Flags": { }
+                }
+            ],
+            "id": 1,
+            "name": "forest"
+        },
+        {
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "You are in a clearing, with a forest surrounding you on the west and south.\nThere is a forest to the south, and a canyon to the west.",
+                    "SetFlags": { }
+                }
+            ],
+            "directions": [
+                {
+                    "cardinal": "south",
+                    "roomId": 1,
+                    "Flags": { }
+                },
+                {
+                    "cardinal": "west",
+                    "roomId": 3,
+                    "Flags": { }
+                }
+            ],
+            "id": 2,
+            "name": "clearing"
+        },
+        {
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "You are at the top of the great canyon on its south wall.\nThere is a beach to the west, and a clearing to the east.",
+                    "SetFlags": { }
+                }
+            ],
+            "directions": [
+                {
+                    "cardinal": "east",
+                    "roomId": 2,
+                    "Flags": { }
+                },
+                {
+                    "cardinal": "west",
+                    "roomId": 4,
+                    "Flags": {
+
+                    }
+                }
+            ],
+            "id": 3,
+            "name": "canyon"
+        },
+        {
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "You are on a small beach on the Frigid River, past the falls.\nThere is a faint smell of sulfur coming from the ground.\nThere is a clearing to the north, and a canyon to the east.",
+                    "SetFlags": { }
+                }
+            ],
+            "directions": [
+                {
+                    "cardinal": "down",
+                    "roomId": -1,
+                    "Flags": { }
+                },
+                {
+                    "cardinal": "east",
+                    "roomId": 3,
+                    "Flags": { }
+                }
+            ],
+            "id": 4,
+            "name": "beach"
+        },
+        {
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "In front of you is the River Styx."
+                }
+            ],
+            "directions": [
+                {
+                    "cardinal": "forward",
+                    "roomId": -2,
+                    "Flags": { }
+                }
+            ],
+            "id": -1,
+            "name": "styx"
+        },
+        {
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "\nWelcome to Hades!\n\nWe must inform you that no one ever leaves.\nYou might as well end right now.",
+                    "SetFlags": { }
+                }
+            ],
+            "directions": [ ],
+            "id": -2,
+            "name": "hades"
+        }
+    ],
+    "things": [
+        {
+            "article": "a",
+            "category": "key",
+            "commandActions": [
+                {
+                    "commandName": "lock"
+                },
+                { 
+                    "commandName":  "unlock"
+                }
+            ],
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "A small key made of dull brass.",
+                    "SetFlags": {
+                        "InspectedKey": true
+                    }
+                }
+            ],
+            "foundIn": 2,
+            "id": 0,
+            "name": "brass key"
+        },
+        {
+            "article": "a",
+            "category": "weapon",
+            "commandActions": [
+                {
+                    "commandName": "kill"
+                }
+            ],
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "A little dull at parts, but this knife is still sharp enough to do some damage.",
+                    "SetFlags": { }
+                }
+            ],
+            "foundIn": 3,
+            "id": 1,
+            "name": "knife"
+        },
+        {
+            "article": "a",
+            "category": "food",            
+            "commandActions": [
+                {
+                    "commandName": "eat"
+                }
+            ],
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "You know how you make a cheeseburger better?  Put a ham sandwich on it.",
+                    "SetFlags": { }
+                }
+            ],
+            "foundIn": 4,
+            "id": 2,
+            "name": "sandwich"
+        },
+        {
+            "article": "a",
+            "category": "beverage",            
+            "commandActions": [
+                {
+                    "commandName": "drink"
+                }
+            ],
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "This glass is definitely half full...or empty, of water",
+                    "SetFlags": { }
+                }
+            ],
+            "foundIn": 4,
+            "id": 3,
+            "name": "glass of water"
+        },
+        {
+            "article": "a",
+            "category": "movableItem",            
+            "commandActions": [
+                {
+                    "commandName": "move",
+                    "flag": "HasMovedItem4",
+                    "newValue": true,
+                    "shouldFlip":  true
+                }
+            ],
+            "descriptors": [
+                {
+                    "Flags": { },
+                    "isDefault": true,
+                    "name": "normal",
+                    "text": "A classic arcade machine.  It looks like it has Galaga written on it.",
+                    "SetFlags": { }
+                },
+                {
+                    "Flags": {
+                        "HasItem1": true
+                    },
+                    "isDefault": false,
+                    "name": "Opt1",
+                    "text": "Still an arcade machine even if you have a knife.",
+                    "SetFlags": { }
+                }
+            ],
+            "foundIn": 0,
+            "id": 4,
+            "name": "Arcade Machine"
+        }
+    ], "stateChangeActions": [
+        {
+            "flag": "HasMovedItem4",
+            "toValue": true,
+            "printText":  "\nYou've exposed an opening in the room."
+        }
+    ]
+}
