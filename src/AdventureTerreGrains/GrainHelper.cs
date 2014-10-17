@@ -57,25 +57,22 @@ namespace AdventureTerreGrains
                                 return descriptor.Text;
                                 //return descriptor;
                             }
-                            else
-                            {
-                                if (descriptors[0].SetFlags != null &&
-                                    descriptors[0].SetFlags.Count > 0)
-                                {
-                                    try
-                                    {
-                                        await gameState.SetGameStateFlags(descriptors[0].SetFlags);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        Trace.TraceError("Error setting game state flags: " + ex.Message);
-                                        return "error";
-                                    }
-                                }
-                                return descriptors[0].Text;
-                            }
                         }
                     }
+                    if (descriptors[0].SetFlags != null &&
+                        descriptors[0].SetFlags.Count > 0)
+                    {
+                        try
+                        {
+                            await gameState.SetGameStateFlags(descriptors[0].SetFlags);
+                        }
+                        catch (Exception ex)
+                        {
+                            Trace.TraceError("Error setting game state flags: " + ex.Message);
+                            return "error";
+                        }
+                    }
+                    return descriptors[0].Text;
                 }
             }
             return "No Descriptors";
