@@ -10,3 +10,5 @@ into the following files:
 * AdventureTerreAzure/ServiceConfiguration.Cloud.cscfg
 
 
+You'll also need to install the Orleans framework which you can download from here [https://orleans.codeplex.com/](https://orleans.codeplex.com/).
+
